@@ -11,10 +11,11 @@ import EventService from '@/services/EventService'
 // import { response } from 'express'
 
 export default{
+    prop: ['id'],
     data(){
         return{
             event: null,
-            id: 123
+            
         }
     },
     create(){
