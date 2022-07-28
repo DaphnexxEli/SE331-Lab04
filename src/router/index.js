@@ -13,7 +13,7 @@ const routes = [{
         component: AboutView
     },
     {
-        path: '/event/123',
+        path: '/event/:id',
         name: 'EventDetails',
         component: EventDetails,
         prop: true
