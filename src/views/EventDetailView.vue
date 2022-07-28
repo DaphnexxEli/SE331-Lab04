@@ -7,8 +7,8 @@
 </template>
 <script>
 import EventService from '@/services/EventService'
-import { create } from 'domain'
-import { response } from 'express'
+// import { create } from 'domain'
+// import { response } from 'express'
 
 export default{
     data(){
