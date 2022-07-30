@@ -21,6 +21,9 @@
         Next Page</router-link
       >
     </div>
+    <router-link :to="{ name: 'EventList', query: { morepage: morepage + 1 } }">
+      Add data</router-link
+    >
   </div>
 </template>
 
@@ -37,6 +40,10 @@ export default {
     page:{
     type: Number,
     required: true
+    },
+    morepage: {
+      type: Number,
+      required: true
     }
   },
   components: {
@@ -50,7 +57,7 @@ export default {
   },
   created() {
      watchEffect(() => {
-      EventService.getEvents(2, this.page)
+      EventService.getEvents(this.morepage, this.page)
         .then((response) => {
           this.events = response.data
           this.totalEvents = response.headers['x-total-count'] // <--- Store it
