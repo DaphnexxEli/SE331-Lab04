@@ -7,6 +7,7 @@ module.exports = {
         "plugin:vue/vue3-essential",
         "eslint:recommended",
 
+
         // "prettier/prettier": ["error", {
         //     "singleQuote": false
         // }],
