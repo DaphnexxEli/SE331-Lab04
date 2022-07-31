@@ -1,7 +1,7 @@
 <template>
   <h1>Events For Good</h1>
   <div class="events">
-     <EventCard
+    <EventCard
       v-for="event in events"
       :key="event.id"
       :event="event"
@@ -33,17 +33,15 @@
 
 <script>
 // @ is an alias to /src
-//import EventCard from '@/components/EventCard.vue'
+import EventCard from '@/components/EventCard.vue'
 import EventService from '@/services/EventService.js'
-// import { computed } from '@vue/reactivity'
 import { watchEffect } from '@vue/runtime-core'
-// import { error } from 'console'
 export default {
   name: 'EventListView',
-  props:{
-    page:{
-    type: Number,
-    required: true
+  props: {
+    page: {
+      type: Number,
+      required: true
     },
     morepage: {
       type: Number,
@@ -56,11 +54,11 @@ export default {
   data() {
     return {
       events: null,
-      totalEvents: 0 // <--- Add this to store totalEvents
+      totalEvents: 0 // <--- Added this to store totalEvents
     }
   },
   created() {
-     watchEffect(() => {
+    watchEffect(() => {
       EventService.getEvents(this.morepage, this.page)
         .then((response) => {
           this.events = response.data
@@ -75,12 +73,12 @@ export default {
     hasNextPage() {
       //First, calculate total pages
       let totalPages = Math.ceil(this.totalEvents / 2) // 2 is events per pages.
+
       //Then check to see if the current page is less than the total pages.
       return this.page < totalPages
     }
-    }
   }
-
+}
 </script>
 <style scoped>
 .events {
@@ -88,19 +86,22 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.pagination{
+
+.pagination {
   display: flex;
   width: 290px;
 }
-.pagination a{
+.pagination a {
   flex: 1;
   text-decoration: none;
   color: #2c3e50;
 }
-#page-prev{
+
+#page-prev {
   text-align: left;
 }
-#page-next{
+
+#page-next {
   text-align: right;
 }
 </style>
